@@ -20,12 +20,9 @@ app.get('/health-check', (_, res) => {
 // Importing all routes
 app.use('/api/v1', Indexrouter)
 
-// Error Handling
+// redirect to swagger
 app.use('*', (req, res) => {
-    return res.json({
-        status: 404,
-        message: "Route not found"
-    })
+    res.redirect('/api-docs')
 })
 
 app.use((err, req, res, next) => {
